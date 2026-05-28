@@ -3,6 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
+  const navButtons = document.querySelectorAll(".nav-item");
+  const dashboardSections = document.querySelectorAll(".dashboard-section");
+
+  function switchSection(targetId) {
+    dashboardSections.forEach((section) => {
+      section.classList.toggle("hidden", section.id !== targetId);
+    });
+    navButtons.forEach((button) => {
+      button.classList.toggle("active", button.dataset.section === targetId);
+    });
+  }
+
+  navButtons.forEach((button) => {
+    button.addEventListener("click", () => switchSection(button.dataset.section));
+  });
 
   // Function to fetch activities from API
   async function fetchActivities() {
