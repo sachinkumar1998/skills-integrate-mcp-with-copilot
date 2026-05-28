@@ -29,15 +29,15 @@ header h1 {
 }
 
 main {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 240px 1fr;
   gap: 30px;
-  justify-content: center;
 }
 
 @media (min-width: 768px) {
+
   main {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 240px 1fr;
   }
 }
 
@@ -48,6 +48,77 @@ section {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 20px;
+  align-self: start;
+  max-height: calc(100vh - 40px);
+}
+
+.sidebar nav {
+  display: block;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .nav-item {
+  width: 100%;
+  text-align: left;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.sidebar .nav-item:hover,
+.sidebar .nav-item.active {
+  background-color: #1a237e;
+  color: white;
+  border-color: #1a237e;
+}
+
+.dashboard-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dashboard-section {
+  max-width: none;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 800px) {
+  .overview-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.overview-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 18px;
+  background-color: #f9fbff;
+}
+
+.overview-card h4 {
+  margin-bottom: 10px;
+  color: #1a237e;
 }
 
 section h3 {
